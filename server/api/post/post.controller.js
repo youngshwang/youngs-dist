@@ -21,15 +21,17 @@
     return Post.findOne({
       pid: req.params.id
     }, function(err, doc) {
+      var idx;
       if (err) {
         return handleError(res, err);
       }
       if (!doc) {
         return res.status(404).send('Not Found');
       }
+      idx = Number(req.params.id) + 10;
       return Post.find({
         pid: {
-          $lte: req.params.id + 5
+          $lte: idx
         }
       }, {
         pid: 1,
