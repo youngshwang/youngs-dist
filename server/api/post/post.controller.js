@@ -34,6 +34,8 @@
       }, {
         pid: 1,
         title: 1
+      }).sort({
+        pid: -1
       }).limit(10).exec(function(err, list) {
         if (err) {
           return handleError(res, err);
